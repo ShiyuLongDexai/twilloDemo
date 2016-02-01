@@ -68,7 +68,7 @@ public class HomeController {
 	 * @throws InterruptedException 
 	 * @throws NumberFormatException 
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/")
 	public String home(Locale locale, 
 			@RequestParam(value = "digits", required = false) String digits,
 			@RequestParam(value = "sleep", required = false) String sleep,
@@ -149,7 +149,7 @@ public class HomeController {
 		return doc;
 	}
 	
-	@RequestMapping(value = "/callAgain", method = RequestMethod.GET)
+	@RequestMapping(value = "/callAgain", method = RequestMethod.POST)
 	public String callAgain(Locale locale,
 			@RequestParam(value = "number", required = false) String number,
 			@RequestParam(value = "input", required = false) String input,
@@ -170,7 +170,7 @@ public class HomeController {
 		
 		
 		
-		return "home";
+		return "redirect:"  + "http://24.5.178.236:8080/myapp";
 	}
 	
 	@RequestMapping(value = "/tw/num", method = RequestMethod.GET, headers = {"X-Twilio-Signature"})
@@ -181,7 +181,7 @@ public class HomeController {
 		
 		Logic l = new Logic();
 		Response response = new Response();
-		response.setSay("Your input is " +digits+", you output is "+l.helper(digits));
+		response.setSay("Your input is " +digits+", you output is "+l.helper(digits) +".   Good Bye.");
 		
 		return response;
 	}
@@ -194,7 +194,7 @@ public class HomeController {
 		
 		Logic l = new Logic();
 		Response response = new Response();
-		response.setSay("Your input is " +digits+", you output is "+l.helper(digits));
+		response.setSay("Your input is " +digits+", you output is "+l.helper(digits) +".   Good Bye.");
 		p.setInput(digits);
 		callService.addCall(p);
 		return response;
