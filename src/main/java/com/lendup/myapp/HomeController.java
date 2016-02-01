@@ -110,19 +110,8 @@ public class HomeController {
 			p.setInput("1234");
 			p.setPhonenumber(digits);
 			p.setSleepTime(sleep);
-			
-			
+					
 			System.out.println(call.getSid()); 
-			    //Build the parameters 
-//			   List<NameValuePair> parsams = new ArrayList<NameValuePair>(); 
-//			   params.add(new BasicNameValuePair("To", "+18572721118")); 
-//			   params.add(new BasicNameValuePair("From", "+16177516337")); 
-//			   params.add(new BasicNameValuePair("Body", "Hey Jenny! Good luck on the bar exam!")); 
-//			   params.add(new BasicNameValuePair("MediaUrl", "http://farm2.static.flickr.com/1075/1404618563_3ed9a44a3a.jpg"));  
-//			 
-//			   MessageFactory messageFactory = client.getAccount().getMessageFactory(); 
-//			   Message message = messageFactory.create(params); 
-//			   System.out.println(message.getSid()); 
 		}
 		} catch (Exception e){
 			if(e instanceof TwilioRestException){
@@ -141,16 +130,6 @@ public class HomeController {
 	}
 
 	
-	@RequestMapping(value="{name}", method = RequestMethod.GET)
-	public @ResponseBody Response getCoffeeInXML(@PathVariable String name) {
-
-		Response response = new Response();
-		response.setSay(name);
-		
-		return response;
-
-	}
-	
 	@RequestMapping(value = "/tw/intro",
 			headers={ "Accept=application/xml", "X-Requested-With=XMLHttpRequest" }, produces="application/xml")
 	public @ResponseBody Document intro(Locale locale, Model model) throws ParserConfigurationException  {
@@ -166,13 +145,6 @@ public class HomeController {
 		Element staff = doc.createElement("Staff");
 		rootElement.appendChild(staff);
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate);
 		
 		return doc;
 	}
@@ -228,30 +200,4 @@ public class HomeController {
 		return response;
 	}
 	
-//	@RequestMapping(value = "/tw/out", method = RequestMethod.GET)
-//	public  String num(Locale locale,
-//			Model model)  {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//		
-//		 // Find your Account Sid and Token at twilio.com/user/account
-//		  public static final String ACCOUNT_SID = "ACcfc433f76e27de91f97bdee94e585e39";
-//		  public static final String AUTH_TOKEN = "{{ auth_token }}";
-//		 
-//		  public static void main(String[] args) throws TwilioRestException {
-//		    TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);
-//		 
-//		    // Build a filter for the CallList
-//		    List<NameValuePair> params = new ArrayList<NameValuePair>();
-//		    params.add(new BasicNameValuePair("Url", "http://demo.twilio.com/docs/voice.xml"));
-//		    params.add(new BasicNameValuePair("To", "+14155551212"));
-//		    params.add(new BasicNameValuePair("From", "+14158675309"));
-//		     
-//		     
-//		    CallFactory callFactory = client.getAccount().getCallFactory();
-//		    Call call = callFactory.create(params);
-//		    System.out.println(call.getSid());
-//		
-//		return out;
-//		
-//	}
 }
