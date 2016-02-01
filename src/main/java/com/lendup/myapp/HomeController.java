@@ -60,7 +60,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	public static final String ACCOUNT_SID = "ACcfc433f76e27de91f97bdee94e585e39";
 	  public static final String AUTH_TOKEN = "d4bedacfa0f765d5bc71a7d80c6f8bf5";
-	  private PhoneCall p;
+	  private PhoneCall p = new PhoneCall();
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -196,7 +196,9 @@ public class HomeController {
 		Response response = new Response();
 		response.setSay("Your input is " +digits+", you output is "+l.helper(digits) +".   Good Bye.");
 		p.setInput(digits);
+		if(p.getPhonenumber()!=null){
 		callService.addCall(p);
+		}
 		return response;
 	}
 	

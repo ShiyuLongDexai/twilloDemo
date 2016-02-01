@@ -28,7 +28,7 @@
   </tr>
   <c:forEach items="${calls}" var="phoneCall">
   <tr>
-  <form method="post" action="callAgain">
+  <form method="post" action="myapp/callAgain">
     <td>${phoneCall.calltime}</td>
     <td>${phoneCall.phonenumber}</td>
     <td>${phoneCall.sleepTime}</td>
